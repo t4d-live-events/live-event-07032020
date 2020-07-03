@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 
 import { HistoryEntry } from '../models/HistoryEntry';
 
+import './CalcHistory.css';
+
 export interface CalcHistoryProps {
   history: HistoryEntry[];
   onDeleteHistoryEntry: (historyEntryId: number) => void;
@@ -16,7 +18,7 @@ export const CalcHistory: FC<CalcHistoryProps> = ({
   return (
     <>
       <header>
-        <h3>Calculator History</h3>
+        <h2>Calculator History</h2>
       </header>
       <table>
         <thead>
