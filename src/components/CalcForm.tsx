@@ -2,16 +2,16 @@ import React, { FC, useState, ChangeEvent } from 'react';
 
 import './CalcForm.css';
 
+import { DoOpType, ComputeFnType } from '../types/CalcStoreTypes';
+
 export interface CalcFormProps {
   result?: number;
-  onAdd: (value: number) => void;
-  onSubtract: (value: number) => void;
+  onDoOp: DoOpType;
 }
 
 export const CalcForm: FC<CalcFormProps> = ({
   result,
-  onAdd: add,
-  onSubtract: subtract,
+  onDoOp,
 }) => {
 
   const [ num, setNum ] = useState(0);
@@ -19,6 +19,11 @@ export const CalcForm: FC<CalcFormProps> = ({
   const change = (e: ChangeEvent<HTMLInputElement>) => {
     setNum(Number(e.target.value));
   };
+
+  const add: ComputeFnType = (valA, valB) => valA + valB;
+  const subtract: ComputeFnType = (valA, valB) => valA - valB;
+  const multiply: ComputeFnType = (valA, valB) => valA * valB;
+  const divide: ComputeFnType = (valA, valB) => valA / valB;
 
   return (
     <form>
@@ -30,8 +35,10 @@ export const CalcForm: FC<CalcFormProps> = ({
         <input type="number" id="num-input" value={num} onChange={change} />
       </div>
       <fieldset>
-        <button type="button" onClick={() => add(num)}>+</button>
-        <button type="button" onClick={() => subtract(num)}>-</button>
+        <button type="button" onClick={() => onDoOp(num, add)}>+</button>
+        <button type="button" onClick={() => onDoOp(num, subtract)}>-</button>
+        <button type="button" onClick={() => onDoOp(num, multiply)}>*</button>
+        <button type="button" onClick={() => onDoOp(num, divide)}>/</button>
       </fieldset>
     </form>
   );

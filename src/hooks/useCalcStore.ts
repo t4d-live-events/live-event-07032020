@@ -1,22 +1,18 @@
 import { useState } from 'react';
 
+import { CalcStoreType, DoOpType } from '../types/CalcStoreTypes';
 
-export const useCalcStore = () => {
+export const useCalcStore: () => CalcStoreType = () => {
 
   const [ result, setResult ] = useState(0);
 
-  const add = (value: number) => {
-    setResult(result + value);
-  };
-
-  const subtract = (value: number) => {
-    setResult(result - value);
+  const doOp: DoOpType = (value, computeFn) => {
+    setResult(computeFn(result, value));
   };
 
   return {
     result,
-    onAdd: add,
-    onSubtract: subtract,
+    onDoOp: doOp,
   };
 
 };

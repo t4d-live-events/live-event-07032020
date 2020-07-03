@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-import { useCalcStore } from './hooks/useCalcStore';
-import { CalcForm } from './components/CalcForm';
+import { CalcFormContainer } from './containers/CalcFormContainer';
 
 import './App.css';
 
-export const App = () => {
-
-  const calcFormProps = useCalcStore();
+export const App: FC = () => {
 
   return (
     <div className="layout">
@@ -15,7 +12,8 @@ export const App = () => {
         <h2>Calculator</h2>
       </header>
       <main id="page-content">
-        <CalcForm {...calcFormProps} />
+        <CalcFormContainer headerText="Calc Form 1" />
+        <CalcFormContainer headerText="Calc Form 2" />
       </main>
       <footer id="page-footer">
         <small>&copy; 2020 Training 4 Developers, Inc. - MIT License</small>
