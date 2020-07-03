@@ -7,11 +7,13 @@ import { DoOpType, ComputeFnType } from '../types/CalcStoreTypes';
 export interface CalcFormProps {
   result?: number;
   onDoOp: DoOpType;
+  onClearHistory: () => void;
 }
 
 export const CalcForm: FC<CalcFormProps> = ({
   result,
-  onDoOp,
+  onDoOp: doOp,
+  onClearHistory,
 }) => {
 
   const [ num, setNum ] = useState(0);
@@ -25,6 +27,11 @@ export const CalcForm: FC<CalcFormProps> = ({
   const multiply: ComputeFnType = (valA, valB) => valA * valB;
   const divide: ComputeFnType = (valA, valB) => valA / valB;
 
+  const clearHistory = () => {
+    setNum(0);
+    onClearHistory();
+  };
+
   return (
     <form>
       <div>
@@ -35,10 +42,11 @@ export const CalcForm: FC<CalcFormProps> = ({
         <input type="number" id="num-input" value={num} onChange={change} />
       </div>
       <fieldset>
-        <button type="button" onClick={() => onDoOp(num, add)}>+</button>
-        <button type="button" onClick={() => onDoOp(num, subtract)}>-</button>
-        <button type="button" onClick={() => onDoOp(num, multiply)}>*</button>
-        <button type="button" onClick={() => onDoOp(num, divide)}>/</button>
+        <button type="button" onClick={() => doOp('Add', num, add)}>+</button>
+        <button type="button" onClick={() => doOp('Subtract', num, subtract)}>-</button>
+        <button type="button" onClick={() => doOp('Multiply', num, multiply)}>*</button>
+        <button type="button" onClick={() => doOp('Divide', num, divide)}>/</button>
+        <button type="button" onClick={clearHistory}>Clear</button>
       </fieldset>
     </form>
   );

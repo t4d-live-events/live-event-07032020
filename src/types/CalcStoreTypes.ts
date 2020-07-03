@@ -1,10 +1,12 @@
-
+import { HistoryEntry } from '../models/HistoryEntry';
 
 export type ComputeFnType = (valA: number, valB: number) => number;
 
-export type DoOpType = (value: number, computeFn: ComputeFnType) => void;
+export type DoOpType = (name: string, value: number, computeFn: ComputeFnType) => void;
 
 export type CalcStoreType = {
-  result: number;
+  history: HistoryEntry[];
   onDoOp: DoOpType;
-}
+  onDeleteHistoryEntry: (historyEntryId: number) => void;
+  onClearHistory: () => void;
+};

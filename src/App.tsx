@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { CalcFormContainer } from './containers/CalcFormContainer';
+import { CalcToolContainer } from './containers/CalcToolContainer';
 
 import './App.css';
 
@@ -12,8 +12,8 @@ export const App: FC = () => {
         <h2>Calculator</h2>
       </header>
       <main id="page-content">
-        <CalcFormContainer headerText="Calc Form 1" />
-        <CalcFormContainer headerText="Calc Form 2" />
+        <CalcToolContainer headerText="Calc Tool 1" />
+        <CalcToolContainer headerText="Calc Tool 2" />
       </main>
       <footer id="page-footer">
         <small>&copy; 2020 Training 4 Developers, Inc. - MIT License</small>
