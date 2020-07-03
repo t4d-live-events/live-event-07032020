@@ -1,0 +1,16 @@
+:root {
+  font-family: sans-serif;
+}
+
+#page-header, #page-footer {
+  background-color: navy;
+  color: white;
+}
+
+#page-header h2 {
+  font-size: 2rem;
+}
+
+#page-footer small {
+  font-size: 0.8rem;
+}

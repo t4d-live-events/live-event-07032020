@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import { useCalcStore } from './hooks/useCalcStore';
+import { CalcForm } from './components/CalcForm';
+
 import './App.css';
 
-function App() {
+export const App = () => {
+
+  const calcFormProps = useCalcStore();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="layout">
+      <header id="page-header">
+        <h2>Calculator</h2>
       </header>
+      <main id="page-content">
+        <CalcForm {...calcFormProps} />
+      </main>
+      <footer id="page-footer">
+        <small>&copy; 2020 Training 4 Developers, Inc. - MIT License</small>
+      </footer>
     </div>
   );
 }
-
-export default App;
